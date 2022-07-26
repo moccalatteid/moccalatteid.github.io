@@ -123,13 +123,14 @@ class AdminModel extends Model
 		return $query;
 	}
 
-	public function getMahasiswaPemb4($slug)
+	public function getMahasiswaPemb4($slug, $tahun)
 	{
 		$builder = $this->db->table('dospem');
 		$builder->select('*');
 		$builder->join('mahasiswa', 'dospem.id_mhs = mahasiswa.id', 'inner');
 		$builder->join('dosen', 'dospem.id_dosen = dosen.id', 'inner');
 		$builder->where(['dosen.slug' => $slug]);
+		$builder->where(['mahasiswa.tahun_akademik' => $tahun]);
 		$query = $builder->get()->getResultArray();
 		return $query;
 	}
@@ -194,6 +195,16 @@ class AdminModel extends Model
 		$builder->groupBy("tahun_akademik");
 		$builder->orderBy("tahun_akademik", "ASC");
 		$query = $builder->get()->getResultArray();
+		return $query;
+	}
+
+	public function getTahun2($tahun)
+	{
+		$builder = $this->db->table('mahasiswa');
+		$builder->select('tahun_akademik');
+		$builder->groupBy("tahun_akademik");
+		$builder->orderBy("tahun_akademik", "ASC");
+		$query = $builder->get()->getRow($tahun);
 		return $query;
 	}
 

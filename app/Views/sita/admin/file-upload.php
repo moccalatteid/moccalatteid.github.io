@@ -173,6 +173,8 @@
     <div class="jurusan2">: <?= $mahasiswa['tempat_pkl'];  ?> </div>
 </div>
 
+<a href="/admin/upload" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
+
 <?php $no = 1;  ?>
 <table class="tableku mt-2" border=1 width=100%>
     <thead>

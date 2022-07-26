@@ -3,10 +3,10 @@
 <?= $this->section('isi'); ?>
 
 <div class="container">
-    <?php foreach ($tahun as $t) : ?>
-        <h4 class="mt-2">Daftar Mahasiswa Pembimbing <?= $dosen['nama']; ?></h4>
+    <h4 class="mt-2">Daftar Mahasiswa Pembimbing <?= $dosen['nama']; ?></h4>
+    <!-- <?php foreach ($tahun as $t) : ?>
         <h4>Tahun Akademik <?= $t['tahun_akademik']; ?></h4>
-    <?php endforeach; ?>
+    <?php endforeach; ?> -->
     <a href="/admin/tahun-dospem/<?= $dosen['slug']; ?>" class="btn btn-secondary btn-sm mb-2"><i class="fas fa-arrow-left"></i></a>
     <div class="row">
         <div class="col">

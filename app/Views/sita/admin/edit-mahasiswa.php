@@ -6,9 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <?php foreach ($tahun as $t) : ?>
-                <a href="/admin/kelola-mahasiswa/<?= $t['tahun_akademik']; ?>" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
-            <?php endforeach; ?>
+            <a href="/admin/kelola-mahasiswa" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
             <h2 class="my-3">Edit Data Mahasiswa</h2>
             <form action="/admin/ubah/<?= $mahasiswa['id'];  ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field();  ?>

@@ -514,14 +514,14 @@ class Admin extends BaseController
       return view('sita/admin/tahun-dospem', $data);
    }
 
-   public function tahunDospem($id_dospem)
+   public function tahunDospem($id_dospem, $tahun)
    {
       $data = [
          'title'     => 'Dosen Pembimbing | SISFO PKL',
          'admin'     => $this->userModel->joinAdmin(),
          'dosen'     => $this->adminModel->getDetailDosenAdmin($id_dospem),
-         'mahasiswa' => $this->adminModel->getMahasiswaPemb4($id_dospem),
-         'tahun'     => $this->dosenModel->getTahunMhs()
+         'mahasiswa' => $this->adminModel->getMahasiswaPemb4($id_dospem, $tahun),
+         'tahun'     => $this->adminModel->getTahun()
       ];
 
       return view('sita/admin/dospem', $data);

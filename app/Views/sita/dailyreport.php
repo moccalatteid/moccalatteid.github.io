@@ -31,11 +31,6 @@
             <div class="col">
                 <h3 class="mt-2">Daftar Mahasiswa</h3>
                 <a href="/admin/dailyreport" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i></a>
-                <?php if (session()->getFlashdata('pesan')) :  ?>
-                    <div class="alert alert-success my-2" role="alert">
-                        <?= session()->getFlashdata('pesan');  ?>
-                    </div>
-                <?php endif;  ?>
                 <table class="table table-bordered table-striped mt-3">
                     <thead style="text-align: center;">
                         <tr>

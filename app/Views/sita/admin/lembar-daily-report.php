@@ -173,9 +173,7 @@
     <div class="jurusan2">: <?= $mahasiswa['tempat_pkl'];  ?> </div>
 </div>
 
-<?php foreach ($tahun as $t) : ?>
-    <a href="/admin/dailyreport/<?= $t['tahun_akademik']; ?>" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
-<?php endforeach; ?>
+<a href="/admin/dailyreport" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
 
 <?php $no = 1;  ?>
 <table class="tableku mt-2" border=1 width=100%>

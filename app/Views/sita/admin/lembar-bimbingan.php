@@ -171,6 +171,8 @@
     <div class="jurusan2">: <?= $mahasiswa['tempat_pkl'];  ?> </div>
 </div>
 
+<a href="/admin/bimbingan" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
+
 <?php if ($acc < 1) { ?>
     <a href="/admin/export/<?= $export['id_dospem'];  ?>" target="_blank" style="display:none;" class="export"><i class="fas fa-file-export"></i> Export</a>
 <?php } else { ?>

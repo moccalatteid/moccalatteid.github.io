@@ -8,7 +8,7 @@ class MahasiswaModel extends Model
 {
     protected $table = 'mahasiswa';
     protected $useTimestamps = true;
-    protected $allowedFields = ['nama_mhs', 'slug', 'nim', 'jurusan', 'kelas', 'gambar', 'tahun_akademik', 'tempat_lahir', 'tgl_lahir', 'email', 'no_hp', 'alamat', 'tempat_pkl'];
+    protected $allowedFields = ['nama_mhs', 'slug', 'nim', 'jurusan', 'kelas', 'gambar_mhs', 'tahun_akademik', 'tempat_lahir', 'tgl_lahir', 'email', 'no_hp', 'alamat', 'tempat_pkl'];
     protected $db;
 
     public function __construct()

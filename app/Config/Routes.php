@@ -91,7 +91,7 @@ $routes->get('/admin/upload/(:num)', 'Admin::uploadThn/$1');
 $routes->get('/admin/detail-upload/(:any)', 'Admin::detailUpload/$1');
 $routes->get('/admin/file-pkl/(:num)', 'Admin::fileUpload/$1');
 $routes->get('/admin/export/(:num)', 'Admin::export/$1');
-$routes->get('/admin/(:any)/(:any)', 'Admin::tahunDospem/$1');
+$routes->get('/admin/(:any)/(:any)', 'Admin::tahunDospem/$1/$2');
 
 // Dosen
 $routes->get('/dosen', 'Dosen::index');

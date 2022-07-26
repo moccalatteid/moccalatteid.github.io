@@ -236,9 +236,7 @@
                             <p class="card-text"><?= $d['nip'];  ?></p>
                             <a href="/admin/file-pkl/<?= $d['id_dospem'];  ?>" class="btn btn-primary tombol">Lihat File <i class="far fa-arrow-alt-circle-right"></i></a>
                             <br>
-                            <?php foreach ($tahun as $t) : ?>
-                                <a href="/admin/upload/<?= $t['tahun_akademik']; ?>" class="btn btn-secondary btn-sm mt-3 tombol"><i class="fas fa-arrow-left"></i></a>
-                            <?php endforeach; ?>
+                            <a href="/admin/upload" class="btn btn-secondary btn-sm mt-3 tombol"><i class="fas fa-arrow-left"></i></a>
                         </div>
                     </div>
                 </div>

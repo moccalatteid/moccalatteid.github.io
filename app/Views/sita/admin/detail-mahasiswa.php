@@ -2,9 +2,7 @@
 
 <?= $this->section('isi'); ?>
 
-<?php foreach ($tahun as $t) : ?>
-    <a href="/admin/kelola-mahasiswa/<?= $t['tahun_akademik']; ?>" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
-<?php endforeach; ?>
+<a href="/admin/kelola-mahasiswa" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
 <div class="card mb-3 border-left-primary shadow h-100 py-2" style="max-width: 540px;">
     <div class="row g-0">
         <div class="col-md-8">
