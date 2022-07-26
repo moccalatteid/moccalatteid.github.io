@@ -266,6 +266,17 @@
         <?php endforeach; ?>
     </div>
 
+    <?php if (session()->getFlashdata('gagal')) :  ?>
+        <div class="alert alert-danger my-2" role="alert">
+            <?= session()->getFlashdata('gagal');  ?>
+        </div>
+    <?php endif;  ?>
+    <?php if (session()->getFlashdata('pesan')) :  ?>
+        <div class="alert alert-success my-2" role="alert">
+            <?= session()->getFlashdata('pesan');  ?>
+        </div>
+    <?php endif;  ?>
+
     <?php $no = 1;  ?>
     <table class="tableku mt-2" border=1 width=100%>
         <thead>
@@ -321,9 +332,7 @@
         <div class="jurusan2">: <?= $mahasiswa['tempat_pkl'];  ?></div>
     </div>
 
-    <?php foreach ($tahun as $t) : ?>
-        <a href="/dosen/dailyreport/<?= $t['tahun_akademik']; ?>" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
-    <?php endforeach; ?>
+    <a href="/dosen/dailyreport" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
 
     <?php $no = 1;  ?>
     <table class="tableku" border=1 width=100%>

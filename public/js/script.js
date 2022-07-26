@@ -61,7 +61,6 @@ window.setTimeout(function() {
 
 var path = location.pathname.split('/')
 var url  = location.origin + '/' + path[1] + '/' + path[2]
-console.log(url)
 $('ul.navbar-nav li.nav-item a.nav-link').each(function() {
     if($(this).attr('href').indexOf(url) !== -1) {
         $(this).parent().addClass('active').parent().addClass('active')

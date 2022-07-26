@@ -99,19 +99,17 @@ class Mahasiswa extends BaseController
         $format_indo = date('d-m-Y', strtotime($this->request->getVar('tanggal')));
         // pecah tanggal menjadi array
         $pecah = explode('-', $format_indo);
-
-        $hari = date('D', strtotime($format_indo));
         $tgl = $pecah[0];
         $bulan = $pecah[1];
         $tahun = $pecah[2];
         $tanggal =  $tgl . '-' . $bulan . '-' . $tahun;
 
         $bim = [
-            'uraian' => $this->request->getVar('uraian'),
+            'uraian'      => $this->request->getVar('uraian'),
             'rekomendasi' => $this->request->getVar('rekomendasi'),
-            'tanggal' => $tanggal,
-            'id_status' => 1,
-            'id_dospem' => $this->request->getVar('id_dospem'),
+            'tanggal'     => $tanggal,
+            'id_status'   => 1,
+            'id_dospem'   => $this->request->getVar('id_dospem'),
         ];
 
         $this->bimbinganModel->insert($bim);
@@ -363,7 +361,7 @@ class Mahasiswa extends BaseController
                 ]
             ]
         ])) {
-            session()->setFlashdata('gagal', 'Gagal Menambahkan Daily Report');
+            session()->setFlashdata('gagal', 'Gagal Menambahkan Daily Report Activity');
             return redirect()->back()->withInput();
         }
 
@@ -398,7 +396,7 @@ class Mahasiswa extends BaseController
 
         $this->dailyModel->insert($daily);
 
-        session()->setFlashdata('pesan', 'Berhasil Menambahkan Daily Report');
+        session()->setFlashdata('pesan', 'Berhasil Menambahkan Daily Report Activity');
         return redirect()->to('/mahasiswa/dailyreport/' . $this->request->getVar('id_dospem'));
     }
 

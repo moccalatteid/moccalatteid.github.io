@@ -222,9 +222,11 @@
     <div class="row">
         <p style="font-size:12px;" class="mr-3">Total Bimbingan : <?= $total;  ?> Bimbingan</p>
         <p style="font-size:12px;" class="mr-3">Total ACC Bimbingan : <?= $acc;  ?> Bimbingan</p>
-        <?php if ($acc >= 4) : ?>
+        <?php if ($acc < 7) { ?>
+            <p style="font-size:12px; font-weight:bold">Belum Memenuhi Syarat Minimal Bimbingan untuk Dapat Mendaftar Seminar PKL</p>
+        <?php } elseif ($acc >= 7) { ?>
             <p style="font-size:12px; font-weight:bold">Telah Memenuhi Syarat Minimal Bimbingan untuk Dapat Mendaftar Seminar PKL</p>
-        <?php endif; ?>
+        <?php } ?>
     </div>
 </div>
 

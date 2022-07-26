@@ -134,7 +134,7 @@
                  Profile
              </div>
              <li class="nav-item">
-                 <a class="nav-link" href="/sita">
+                 <a class="nav-link active" href="/sita">
                      <i class="fas fa-user"></i>
                      <span>My Profile</span></a>
              </li>
@@ -319,7 +319,7 @@
      <div class="modal-dialog" role="document">
          <div class="modal-content">
              <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">Yakin ingin Logout?</h5>
+                 <h5 class="modal-title" id="exampleModalLabel">Anda Yakin Ingin Logout?</h5>
                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                      <span aria-hidden="true">×</span>
                  </button>

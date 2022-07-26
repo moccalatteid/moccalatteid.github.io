@@ -350,9 +350,11 @@
         <div class="row">
             <p style="font-size:12px;" class="mr-3">Total Bimbingan : <?= $total;  ?> Bimbingan</p>
             <p style="font-size:12px;" class="mr-3">Total ACC Bimbingan : <?= $acc;  ?> Bimbingan</p>
-            <?php if ($acc >= 4) : ?>
+            <?php if ($acc < 7) { ?>
+                <p style="font-size:12px; font-weight:bold">Belum Memenuhi Syarat Minimal Bimbingan untuk Dapat Mendaftar Seminar PKL</p>
+            <?php } elseif ($acc >= 7) { ?>
                 <p style="font-size:12px; font-weight:bold">Telah Memenuhi Syarat Minimal Bimbingan untuk Dapat Mendaftar Seminar PKL</p>
-            <?php endif; ?>
+            <?php } ?>
         </div>
     </div>
 
@@ -376,9 +378,7 @@
         <div class="jurusan2">: <?= $mahasiswa['tempat_pkl'];  ?></div>
     </div>
 
-    <?php foreach ($tahun as $t) : ?>
-        <a href="/dosen/bimbingan/<?= $t['tahun_akademik']; ?>" class="btn btn-secondary mb-3 btn-sm"><i class="fas fa-arrow-left"></i></a>
-    <?php endforeach; ?>
+    <a href="/dosen/bimbingan" class="btn btn-secondary mb-3 btn-sm"><i class="fas fa-arrow-left"></i></a>
 
     <?php $no = 1;  ?>
     <table class="tableku" border=1 width=100%>
@@ -422,9 +422,11 @@
     <div class="col mt-2">
         <div class="row">
             <p style="font-size:12px;" class="mr-3">Total Bimbingan : <?= $total;  ?> Bimbingan</p>
-            <?php if ($acc >= 4) : ?>
+            <?php if ($acc < 7) { ?>
+                <p style="font-size:12px; font-weight:bold">Belum Memenuhi Syarat Minimal Bimbingan untuk Dapat Mendaftar Seminar PKL</p>
+            <?php } elseif ($acc >= 7) { ?>
                 <p style="font-size:12px; font-weight:bold">Telah Memenuhi Syarat Minimal Bimbingan untuk Dapat Mendaftar Seminar PKL</p>
-            <?php endif; ?>
+            <?php } ?>
         </div>
     </div>
 <?php }  ?>
