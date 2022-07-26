@@ -1,0 +1,16 @@
+th {
+  text-align: center;
+}
+
+.img {
+  width: 100px;
+}
+
+.action a {
+  text-align: center;
+}
+
+.table tbody > tr > * {
+  vertical-align: middle;
+  text-align: center;
+}

@@ -1,0 +1,43 @@
+#body {
+  margin: 0;
+  padding: 0;
+  background-color: #4f73b1;
+  font-family: "Poppins", sans-serif;
+}
+.container-login {
+  width: 350px;
+  margin: 50px auto;
+  border-radius: 4px;
+  box-shadow: 1px 1px 8px black;
+  background-color: rgb(255, 255, 255);
+}
+
+img.img {
+  width: 350px;
+}
+
+.input-group {
+  padding: 0 20px;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  font-size: 14px;
+}
+
+.button {
+  padding: 20px;
+}
+
+button.btn-primary {
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+h4 {
+  padding: 10px;
+  text-align: center;
+
+  /* background-color: red; */
+}
