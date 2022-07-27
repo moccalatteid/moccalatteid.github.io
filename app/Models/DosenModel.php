@@ -18,6 +18,16 @@ class DosenModel extends Model
 		return $builder;
 	}
 
+	public function getDosen($slug = false)
+	{
+		$builder = $this->db->table('dosen');
+		$builder->select('*');
+		$builder->where(['slug' => $slug]);
+		$query = $builder->get()->getRowArray();
+
+		return $query;
+	}
+
 	public function getMahasiswaPemb($tahun)
 	{
 		$builder = $this->db->table('dospem');

@@ -426,7 +426,7 @@ class Admin extends BaseController
 
          // hapus file lama
          if ($this->request->getVar('gambarLama') != 'default.jpg') {
-            unlink('img/' . $this->request->getVar('gambarLama'));
+            unlink('img/mahasiswa/' . $this->request->getVar('gambarLama'));
          }
       }
 

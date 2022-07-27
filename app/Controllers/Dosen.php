@@ -39,6 +39,20 @@ class Dosen extends BaseController
 		return view('sita/index', $data);
 	}
 
+	public function editprofil($slug)
+	{
+		$data = [
+			'title'      => 'Edit Profil | SISFO PKL',
+			'user'       => $this->userModel->joinDosen(),
+			'dosen'  	 => $this->dosenModel->getDosen($slug),
+			'wait' => $this->bimbinganModel->totalBimbinganWaiting(),
+			'notif' => $this->bimbinganModel->totalBimbinganWaiting2(),
+			'validation' => \Config\Services::validation()
+		];
+
+		return view('sita/edit-profil', $data);
+	}
+
 	public function bimbingan()
 	{
 		$data = [

@@ -31,6 +31,58 @@ class Mahasiswa extends BaseController
         return view('sita/home', $data);
     }
 
+    public function edit($slug)
+    {
+        $data = [
+            'title'      => 'Edit Profil | SISFO PKL',
+            'user'       => $this->userModel->joinUser(),
+            'mahasiswa'  => $this->mhsModel->getMhs($slug),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('sita/edit-profil', $data);
+    }
+
+    public function update($id)
+    {
+        if (!$this->validate([
+            'gambar' => [
+                'rules'  => 'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Ukuran File Terlalu Besar!',
+                    'is_image' => 'Harus format gambar (jpg, jpeg, png)',
+                    'mime_in'  => 'Harus format gambar (jpg, jpeg, png)'
+                ]
+            ]
+        ])) {
+            session()->setFlashdata('gagal', 'Gagal Mengganti Foto Profil');
+            return redirect()->back()->withInput();
+        }
+
+        $fileGambar = $this->request->getFile('gambar');
+
+        // cek gambar apa pakai yang lama atau tidak
+        if ($fileGambar->getError() == 4) {
+            $namaGambar = $this->request->getVar('gambarLama');
+        } else {
+            $namaGambar = $fileGambar->getRandomName();
+            $fileGambar->move('img/mahasiswa', $namaGambar);
+
+            // hapus file lama
+            if ($this->request->getVar('gambarLama') != 'default.jpg') {
+                unlink('img/mahasiswa/' . $this->request->getVar('gambarLama'));
+            }
+        }
+
+        $this->mhsModel->save([
+            'id'             => $id,
+            'gambar_mhs'     => $namaGambar,
+        ]);
+
+        session()->setFlashdata('pesan', 'Berhasil Mengganti Foto Profil!');
+        return redirect()->to('/sita');
+    }
+
     public function bimbingan()
     {
         $data = [
@@ -204,85 +256,6 @@ class Mahasiswa extends BaseController
         $mpdf->WriteHTML($html);
 
         return redirect()->to($mpdf->Output('cetak-bimbingan.pdf', 'I'));
-    }
-
-    public function edit($slug)
-    {
-        $data = [
-            'title' => 'Form Edit Data Mahasiswa',
-            'validation' => \Config\Services::validation(),
-            'mahasiswa' => $this->mhsModel->getMahasiswa($slug)
-        ];
-
-        return view('users/mahasiswa/edit', $data);
-    }
-
-    public function update($id)
-    {
-        $mhsLama = $this->mhsModel->getMahasiswa($this->request->getVar('slug'));
-        if ($mhsLama['nim'] == $this->request->getVar('nim')) {
-            $ruleNim = 'required';
-        } else {
-            $ruleNim = 'required|is_unique[mahasiswa.nim]';
-        }
-
-        if (!$this->validate([
-
-            'nama' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Nim tidak boleh kosong!'
-                ]
-            ],
-            'nim' => [
-                'rules' => $ruleNim,
-                'errors' => [
-                    'required' => 'Nim tidak boleh kosong!',
-                    'is_unique' => 'Nim sudah terdaftar!'
-                ]
-            ],
-            'jurusan' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => 'Jurusan tidak boleh kosong!'
-                ]
-            ],
-            'gambar' => [
-                'rules' => 'max_size[gambar,1024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
-                'errors' => [
-                    'max_size' => 'Ukuran gambar terlalu besar',
-                    'is_image' => 'File yang anda pilih bukan gambar',
-                    'mime_in' => 'File yang anda pilih bukan gambar'
-                ]
-            ]
-
-        ])) {
-
-            return redirect()->to('/mahasiswa/edit/' . $this->request->getVar('slug'))->withInput();
-        }
-
-
-        $fileGambar = $this->request->getFile('gambar');
-        // cek gambar apa pakai yang lama atau nggk
-
-        if ($fileGambar->getError() == 4) {
-            $namaGambar = $this->request->getVar('gambarLama');
-        } else {
-            $namaGambar = $fileGambar->getRandomName();
-            $fileGambar->move('components/img', $namaGambar);
-        }
-
-        $slug = url_title($this->request->getVar('nama'), '-', true);
-        $this->mhsModel->save([
-            'id' => $id,
-            'nama' => $this->request->getVar('nama'),
-            'slug' => $slug,
-            'nim' => $this->request->getVar('nim'),
-            'jurusan' => $this->request->getVar('jurusan'),
-            'gambar' => $namaGambar
-        ]);
-        session()->setFlashdata('pesan', 'Data berhasil di ubah!');
-        return redirect()->to('/mahasiswa');
     }
 
     public function delete($id)

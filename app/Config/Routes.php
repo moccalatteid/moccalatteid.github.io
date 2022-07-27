@@ -47,11 +47,13 @@ $routes->get('/download/downloadfile2/(:any)', 'Download::downloadFile2/$1');
 $routes->get('/download/(:any)', 'Download::download/$1');
 
 // SISFO
+// $routes->get('/sita/(:any)', 'Sita::index/$1');
 $routes->get('/sita', 'Sita::index');
 
 // Mahasiswa
 $routes->get('/mahasiswa', 'Mahasiswa::index');
 $routes->get('/mahasiswa/tambah-bimbingan/(:num)', 'Mahasiswa::tambah/$1');
+$routes->get('/mahasiswa/ganti-foto/(:any)', 'Mahasiswa::edit/$1');
 $routes->get('/mahasiswa/bimbingan', 'Mahasiswa::bimbingan');
 $routes->get('/mahasiswa/bimbingan/(:num)', 'Mahasiswa::detail/$1');
 $routes->get('/mahasiswa/edit-bimbingan/(:num)', 'Mahasiswa::editBimbingan/$1');
@@ -95,6 +97,7 @@ $routes->get('/admin/(:any)/(:any)', 'Admin::tahunDospem/$1/$2');
 
 // Dosen
 $routes->get('/dosen', 'Dosen::index');
+$routes->get('/dosen/ganti-foto/(:any)', 'Dosen::edit/$1');
 $routes->get('/dosen/bimbingan', 'Dosen::bimbingan');
 $routes->get('/dosen/pembimbing', 'Dosen::pembimbing');
 $routes->get('/dosen/bimbingan/(:num)', 'Dosen::tahunMhs/$1');
