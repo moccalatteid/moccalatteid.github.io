@@ -239,7 +239,7 @@ class Admin extends BaseController
       $fileGambar = $this->request->getFile('gambar');
 
       if ($fileGambar->getError() == 4) {
-         $namaGambar = 'default.png';
+         $namaGambar = 'default.jpg';
       } else {
          $namaGambar = $fileGambar->getRandomName();
 
@@ -626,7 +626,7 @@ class Admin extends BaseController
       $fileGambar = $this->request->getFile('gambar');
 
       if ($fileGambar->getError() == 4) {
-         $namaGambar = 'default.png';
+         $namaGambar = 'default.jpg';
       } else {
          $namaGambar = $fileGambar->getRandomName();
 
