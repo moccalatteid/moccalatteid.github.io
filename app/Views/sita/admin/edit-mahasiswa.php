@@ -7,10 +7,17 @@
         <div class="col-8">
             <h2 class="my-3">Edit Data Mahasiswa</h2>
             <a href="/admin/kelola-mahasiswa" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
+
+            <?php if (session()->getFlashdata('gagal')) :  ?>
+                <div class="alert alert-danger my-2" role="alert">
+                    <?= session()->getFlashdata('gagal');  ?>
+                </div>
+            <?php endif;  ?>
+
             <div class="card border-left-secondary shadow">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
-                        <form action="/admin/ubah/<?= $mahasiswa['id'];  ?>" method="post" enctype="multipart/form-data">
+                        <form action="/admin/updateMhs/<?= $mahasiswa['id'];  ?>" method="post" enctype="multipart/form-data">
                             <?= csrf_field();  ?>
 
                             <input type="hidden" name="slug" value="<?= $mahasiswa['slug'];  ?>">
@@ -121,19 +128,6 @@
                                     <input type="text" autocomplete="off" value="<?= $mahasiswa['tempat_lahir']; ?>" class="form-control <?= ($validation->hasError('tempat_lahir')) ? 'is-invalid' : ''; ?> " name="tempat_lahir" id="tempat_lahir">
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('tempat_lahir');  ?>
-                                    </div>
-                                </div>
-                                <div class="col-sm-1">
-                                    <span style="color:red;">*</span>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
-                                <div class="col-sm-9">
-                                    <input type="date" autocomplete="off" value="<?= $mahasiswa['tgl_lahir']; ?>" class="form-control <?= ($validation->hasError('tanggal_lahir')) ? 'is-invalid' : ''; ?> " name="tanggal_lahir" id="tanggal_lahir">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('tanggal_lahir');  ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
