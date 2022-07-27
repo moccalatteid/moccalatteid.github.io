@@ -53,6 +53,46 @@ class Dosen extends BaseController
 		return view('sita/edit-profil', $data);
 	}
 
+	public function update($id)
+	{
+		if (!$this->validate([
+			'gambar' => [
+				'rules'  => 'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+				'errors' => [
+					'max_size' => 'Ukuran File Terlalu Besar!',
+					'is_image' => 'Harus format gambar (jpg, jpeg, png)',
+					'mime_in'  => 'Harus format gambar (jpg, jpeg, png)'
+				]
+			]
+		])) {
+			session()->setFlashdata('gagal', 'Gagal Mengganti Foto Profil');
+			return redirect()->back()->withInput();
+		}
+
+		$fileGambar = $this->request->getFile('gambar');
+
+		// cek gambar apa pakai yang lama atau tidak
+		if ($fileGambar->getError() == 4) {
+			$namaGambar = $this->request->getVar('gambarLama');
+		} else {
+			$namaGambar = $fileGambar->getRandomName();
+			$fileGambar->move('img/dosen', $namaGambar);
+
+			// hapus file lama
+			if ($this->request->getVar('gambarLama') != 'default.jpg') {
+				unlink('img/dosen/' . $this->request->getVar('gambarLama'));
+			}
+		}
+
+		$this->dosenModel->save([
+			'id'     => $id,
+			'gambar' => $namaGambar,
+		]);
+
+		session()->setFlashdata('pesan', 'Berhasil Mengganti Foto Profil!');
+		return redirect()->to('/sita');
+	}
+
 	public function bimbingan()
 	{
 		$data = [

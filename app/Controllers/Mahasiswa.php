@@ -75,8 +75,8 @@ class Mahasiswa extends BaseController
         }
 
         $this->mhsModel->save([
-            'id'             => $id,
-            'gambar_mhs'     => $namaGambar,
+            'id'         => $id,
+            'gambar_mhs' => $namaGambar,
         ]);
 
         session()->setFlashdata('pesan', 'Berhasil Mengganti Foto Profil!');

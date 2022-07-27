@@ -97,7 +97,7 @@ $routes->get('/admin/(:any)/(:any)', 'Admin::tahunDospem/$1/$2');
 
 // Dosen
 $routes->get('/dosen', 'Dosen::index');
-$routes->get('/dosen/ganti-foto/(:any)', 'Dosen::edit/$1');
+$routes->get('/dosen/ganti-foto/(:any)', 'Dosen::editprofil/$1');
 $routes->get('/dosen/bimbingan', 'Dosen::bimbingan');
 $routes->get('/dosen/pembimbing', 'Dosen::pembimbing');
 $routes->get('/dosen/bimbingan/(:num)', 'Dosen::tahunMhs/$1');
