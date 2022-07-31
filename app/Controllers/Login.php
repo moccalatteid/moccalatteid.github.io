@@ -32,7 +32,7 @@ class Login extends BaseController
 			'nomor_induk' => [
 				'rules'  => 'required',
 				'errors' => [
-					'required' => 'NIM/NIP/NIDN Tidak Boleh Kosong!'
+					'required' => 'NIM/NIP Tidak Boleh Kosong!'
 				]
 			],
 			'password' => [
@@ -56,7 +56,7 @@ class Login extends BaseController
 
 				return redirect()->to(base_url('sisfo'));
 			} else {
-				session()->setFlashdata('error', 'NIM/NIP/NIDN atau Password Salah!');
+				session()->setFlashdata('error', 'NIM/NIP atau Password Salah!');
 				return redirect()->back();
 			}
 		} else {

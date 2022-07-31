@@ -50,20 +50,6 @@ class Admin extends BaseController
       return view('sita/admin/tahun-tambah-mhsbimbingan', $data);
    }
 
-   public function mhsBimbinganTahun($tahun)
-   {
-      $data = [
-         'title'     => 'Tambah Mahasiswa Bimbingan | SISFO PKL',
-         'admin'     => $this->userModel->joinAdmin(),
-         'dosen'     => $this->adminModel->getDosenAdmin(),
-         'mahasiswa' => $this->adminModel->getMahasiswaAdminThn($tahun),
-         'tahun'     => $this->adminModel->getTahun(),
-         'validation' => \Config\Services::validation()
-      ];
-
-      return view('sita/admin/tambah-mhs-bimbingan', $data);
-   }
-
    public function mahasiswa()
    {
       $data = [
@@ -85,6 +71,21 @@ class Admin extends BaseController
       ];
 
       return view('sita/admin/data-mahasiswa', $data);
+   }
+
+   public function mhsBimbinganTahun($tahun)
+   {
+      $data = [
+         'title'      => 'Tambah Mahasiswa Bimbingan | SISFO PKL',
+         'admin'      => $this->userModel->joinAdmin(),
+         'dosen'      => $this->adminModel->getDosenAdmin(),
+         'dospem'     => $this->adminModel->getDospem(),
+         'mahasiswa'  => $this->adminModel->getMahasiswaAdminThn($tahun),
+         'tahun'      => $this->adminModel->getTahun(),
+         'validation' => \Config\Services::validation()
+      ];
+
+      return view('sita/admin/tambah-mhs-bimbingan', $data);
    }
 
    public function saveMhsBimbingan()
@@ -272,8 +273,8 @@ class Admin extends BaseController
          'alamat'         => $this->request->getVar('alamat'),
          'tempat_pkl'     => $this->request->getVar('tempat_pkl'),
       ];
-
       $this->mhsModel->insert($mhs);
+
       $id_mhs = $this->userModel->insertID();
       $user = [
          'nim'      => $this->request->getVar('nim'),
@@ -281,7 +282,6 @@ class Admin extends BaseController
          'role'     => $this->request->getVar('role'),
          'id_mhs'   => $id_mhs
       ];
-
       $this->userModel->insert($user);
 
       session()->setFlashdata('pesan', 'Data Mahasiswa Berhasil Ditambahkan!');
@@ -421,7 +421,7 @@ class Admin extends BaseController
    public function createDosen()
    {
       $data = [
-         'title'      => 'Form Tambah Data Mahasiswa | SISFO PKL',
+         'title'      => 'Form Tambah Data Dosen | SISFO PKL',
          'admin'      => $this->userModel->joinAdmin(),
          'kelas'      => $this->kelasModel->findAll(),
          'validation' => \Config\Services::validation()
@@ -549,8 +549,8 @@ class Admin extends BaseController
          'alamat'       => $this->request->getVar('alamat'),
          'bid_keahlian' => $this->request->getVar('bidang_keahlian'),
       ];
-
       $this->dosenModel->insert($dosen);
+
       $id_dosen = $this->userModel->insertID();
       $user = [
          'nim'      => $this->request->getVar('nip'),
@@ -558,7 +558,6 @@ class Admin extends BaseController
          'role'     => $this->request->getVar('role'),
          'id_dosen' => $id_dosen
       ];
-
       $this->userModel->insert($user);
 
       session()->setFlashdata('pesan', 'Data Dosen Berhasil Ditambahkan!');
@@ -637,30 +636,58 @@ class Admin extends BaseController
 
    public function import()
    {
-      $file_excel = $this->request->getFile('importexcel');
-      $ext = $file_excel->getClientExtension();
+      $file = $this->request->getFile('file_excel');
+      $ext = $file->getClientExtension();
 
       if ($ext == 'xls') {
-         $render = new \PhpOffice\PhpSpreadSheet\Reader\Xls();
+         $render = new \PhpOffice\PhpSpreadsheet\Reader\Xls();
       } else {
          $render = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
       }
 
-      $spreadsheet = $render->load($file_excel);
+      $spreadsheet = $render->load($file);
+      $sheet = $spreadsheet->getActiveSheet()->toArray();
 
-      $data = $spreadsheet->getActiveSheet()->toArray();
-
-      foreach ($data as $d => $row) {
-         if ($d == 0) {
+      foreach ($sheet as $x => $excel) {
+         if ($x == 0) {
             continue;
          }
-         $nim = $row[1];
-         $nama = $row[2];
 
-         echo "$nim<br>";
-         echo "$nama<br>";
-         echo "<hr>";
+         // skip jika ada data yang sama
+         $nim = $this->mhsModel->cekdata($excel['3']);
+         if ($excel['3'] == $nim['nim']) {
+            continue;
+         }
+
+         $mhs = [
+            'nama_mhs'       => $excel['1'],
+            'slug'           => $excel['2'],
+            'nim'            => $excel['3'],
+            'jurusan'        => $excel['4'],
+            'kelas'          => $excel['5'],
+            'gambar_mhs'     => $excel['6'],
+            'tahun_akademik' => $excel['7'],
+            'tempat_lahir'   => $excel['8'],
+            'tgl_lahir'      => $excel['9'],
+            'email'          => $excel['10'],
+            'no_hp'          => $excel['11'],
+            'alamat'         => $excel['12'],
+            'tempat_pkl'     => $excel['13'],
+         ];
+         $this->mhsModel->insert($mhs);
+
+         $id_mhs = $this->userModel->insertID();
+         $user = [
+            'nim'      => $excel['3'],
+            'password' => $excel['14'],
+            'role'     => $excel['15'],
+            'id_mhs'   => $id_mhs
+         ];
+         $this->userModel->insert($user);
       }
+
+      session()->setFlashdata('pesan', 'Data Mahasiswa Berhasil Ditambahkan!');
+      return redirect()->to('/admin/kelola-mahasiswa');
    }
 
    public function dailyreport()

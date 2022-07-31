@@ -36,6 +36,23 @@ class MahasiswaModel extends Model
         return $query;
     }
 
+    public function getMhsUser($id)
+    {
+        $builder = $this->db->table('user');
+        $builder->select('*');
+        $builder->where(['user.id' => $id]);
+        $query = $builder->get()->getRowArray();
+
+        return $query;
+    }
+
+    public function cekdata($nim)
+    {
+        return $this->db->table('mahasiswa')
+            ->where('nim', $nim)
+            ->get()->getRowArray();
+    }
+
     public function getDospem()
     {
         $builder = $this->db->table('dospem');

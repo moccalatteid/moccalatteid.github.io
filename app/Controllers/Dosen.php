@@ -173,6 +173,7 @@ class Dosen extends BaseController
 
 		return view('sita/edit-bimbingan', $data);
 	}
+
 	public function updatebimbingan()
 	{
 
@@ -185,7 +186,6 @@ class Dosen extends BaseController
 		$tanggal =  $tgl . '-' . $bulan . '-' . $tahun;
 
 		$bimbingan = [
-
 			'id_bimbingan' => $this->request->getVar('id_bimbingan'),
 			'tanggal' => $tanggal,
 			'uraian' => $this->request->getVar('uraian'),

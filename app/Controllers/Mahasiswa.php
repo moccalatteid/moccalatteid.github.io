@@ -83,6 +83,50 @@ class Mahasiswa extends BaseController
         return redirect()->to('/sita');
     }
 
+    public function gantipassword($id)
+    {
+        $data = [
+            'title'      => 'Ganti Password | SISFO PKL',
+            'user'       => $this->userModel->joinUser(),
+            'mahasiswa'  => $this->userModel->joinUser($id),
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('sita/ganti-password', $data);
+    }
+
+    public function savepassword($id)
+    {
+        if (!$this->validate([
+            'password' => [
+                'rules'  => 'required|min_length[5]',
+                'errors' => [
+                    'required'   => 'Password Tidak Boleh Kosong!',
+                    'min_length' => 'Password Minimal 5 Karakter!'
+                ]
+            ],
+            'password_confirm' => [
+                'rules' => 'required|matches[password]',
+                'errors' => [
+                    'required' => 'Konfirmasi Password Tidak Boleh Kosong',
+                    'matches'  => 'Konfrimasi Password Tidak Sama!'
+                ]
+            ]
+        ])) {
+            session()->setFlashdata('gagal', 'Gagal Mengganti Password Baru');
+            return redirect()->back()->withInput();
+        }
+
+        $this->userModel->save([
+            'id_user'  => $id,
+            'password' => $this->request->getVar('password')
+
+        ]);
+
+        session()->setFlashdata('pesan', 'Berhasil Mengganti Password Baru!');
+        return redirect()->to('/sita');
+    }
+
     public function bimbingan()
     {
         $data = [
@@ -557,7 +601,6 @@ class Mahasiswa extends BaseController
             'file_saran_pkl'     => $namaFileSaran,
             'file_nilai_pkl'     => $namaFileNilai,
             'file_laporan_pkl'   => $namaFileLaporan,
-            'id_status'          => 1,
             'id_dospem'          => $this->request->getVar('id_dospem'),
         ];
 

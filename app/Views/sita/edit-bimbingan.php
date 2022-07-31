@@ -68,73 +68,74 @@
         </div>
     </div>
 
-
-
 <?php } else {  ?>
     <div class="container">
         <div class="row">
-            <div class="col-8">
-                <a href="/dosen/detail" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i></a>
+            <div class="col-6">
                 <h4 class="my-3">Edit Bimbingan</h4>
-                <form action="/dosen/updatebimbingan" method="post">
-                    <?= csrf_field();  ?>
-                    <div class="row mb-3">
-                        <label for="tanggal" class="col-sm-2 col-form-label">Tanggal</label>
-                        <div class="col-sm-9">
-                            <?php foreach ($edit as $e) { ?>
-                                <input type="hidden" name="id_bimbingan" value="<?= $e['id_bimbingan'];  ?>">
-                                <input type="hidden" name="id_dospem" value="<?= $e['id_dospem'];  ?>">
+                <a href="/dosen/detail" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
+                <div class="card border-left-secondary shadow">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <form action="/dosen/updatebimbingan" method="post">
+                                <?= csrf_field();  ?>
+                                <div class="row mb-3">
+                                    <label for="tanggal" class="col-sm-4 col-form-label">Tanggal</label>
+                                    <div class="col-sm-7">
+                                        <?php foreach ($edit as $e) { ?>
+                                            <input type="hidden" name="id_bimbingan" value="<?= $e['id_bimbingan'];  ?>">
+                                            <input type="hidden" name="id_dospem" value="<?= $e['id_dospem'];  ?>">
 
-                            <?php  }  ?>
-                            <input type="text" id="tanggal" autocomplete="off" value="<?= $e['tanggal'];   ?>" class="tm form-control" autofocus name=" tanggal" id="tanggal">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="uraian" class="col-sm-2 col-form-label">Uraian Bimbingan</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" value="<?= old('uraian');  ?>" name="uraian" placeholder="I" autocomplete="off" id="uraian" rows="4" readonly>
-                        <?= $e['uraian'];  ?>
-                        </textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="rekomendasi" class="col-sm-2 col-form-label">Rekomendasi Penyelesaian</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" value="<?= old('rekomendasi');  ?>" name="rekomendasi" placeholder="" autocomplete="off" id="rekomendasi" rows="4" readonly>
-                        <?= $e['rekomendasi'];  ?>
-                        </textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" value="<?= old('keterangan');  ?>" name="keterangan" placeholder="Isi Keterangan" autocomplete="off" id="keterangan" rows="4">
-                        <?= $e['keterangan'];  ?>
-                        </textarea>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="uraian" class="col-sm-2 col-form-label">Status</label>
-                        <div class="col-sm-9">
-                            <select class="form-control" name="status" id="">
-                                <option value="1">Waiting</option>
-                                <option value="2">Accept</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-1">
-                            <span style="color:red;">*</span>
-                        </div>
-                    </div>
+                                        <?php  }  ?>
+                                        <input type="text" id="tanggal" autocomplete="off" value="<?= $e['tanggal'];   ?>" class="tm form-control" autofocus name=" tanggal" id="tanggal">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="uraian" class="col-sm-4 col-form-label">Uraian Bimbingan</label>
+                                    <div class="col-sm-7">
+                                        <textarea class="form-control" value="<?= old('uraian');  ?>" name="uraian" placeholder="I" autocomplete="off" id="uraian" rows="4" readonly>
+                                    <?= $e['uraian'];  ?>
+                                    </textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="rekomendasi" class="col-sm-4 col-form-label">Rekomendasi Penyelesaian</label>
+                                    <div class="col-sm-7">
+                                        <textarea class="form-control" value="<?= old('rekomendasi');  ?>" name="rekomendasi" placeholder="" autocomplete="off" id="rekomendasi" rows="4" readonly>
+                                    <?= $e['rekomendasi'];  ?>
+                                    </textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="keterangan" class="col-sm-4 col-form-label">Keterangan</label>
+                                    <div class="col-sm-7">
+                                        <textarea class="form-control" value="<?= old('keterangan');  ?>" name="keterangan" placeholder="Isi Keterangan" autocomplete="off" id="keterangan" rows="4">
+                                    <?= $e['keterangan'];  ?>
+                                    </textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="uraian" class="col-sm-4 col-form-label">Status</label>
+                                    <div class="col-sm-7">
+                                        <select class="form-control" name="status" id="">
+                                            <option value="1">Waiting</option>
+                                            <option value="2">Accept</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <span style="color:red;">*</span>
+                                    </div>
+                                </div>
 
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-
 
 <?php }  ?>
 

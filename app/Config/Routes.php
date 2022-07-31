@@ -54,6 +54,7 @@ $routes->get('/sita', 'Sita::index');
 $routes->get('/mahasiswa', 'Mahasiswa::index');
 $routes->get('/mahasiswa/tambah-bimbingan/(:num)', 'Mahasiswa::tambah/$1');
 $routes->get('/mahasiswa/ganti-foto/(:any)', 'Mahasiswa::edit/$1');
+$routes->get('/mahasiswa/ganti-password/(:any)', 'Mahasiswa::gantipassword/$1');
 $routes->get('/mahasiswa/bimbingan', 'Mahasiswa::bimbingan');
 $routes->get('/mahasiswa/bimbingan/(:num)', 'Mahasiswa::detail/$1');
 $routes->get('/mahasiswa/edit-bimbingan/(:num)', 'Mahasiswa::editBimbingan/$1');

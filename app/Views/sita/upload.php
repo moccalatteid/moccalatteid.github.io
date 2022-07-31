@@ -113,7 +113,7 @@
       <div class="row">
          <br>
          <div class="col">
-            <table class="table mt-3" width=100% id="mahasiswa">
+            <table class="table table-bordered table-striped mt-3" width=100% id="mahasiswa">
                <thead style="text-align: center;">
                   <tr>
                      <th scope="col">No.</th>

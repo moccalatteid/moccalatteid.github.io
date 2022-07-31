@@ -55,7 +55,7 @@
         <div class="login-box-body">
             <form action="<?= base_url(); ?>/login/ceklogin" method="post">
                 <div class="form-group has-feedback">
-                    <input type="text" class="form-control <?= ($validation->hasError('nomor_induk')) ? 'is-invalid' : ''; ?>" placeholder="NIM / NIP / NIDN" name="nomor_induk">
+                    <input type="text" class="form-control <?= ($validation->hasError('nomor_induk')) ? 'is-invalid' : ''; ?>" placeholder="NIM / NIP" name="nomor_induk">
                     <div class="invalid-feedback">
                         <?= $validation->getError('nomor_induk'); ?>
                     </div>

@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col">
             <h3 class="mt-2">Daftar Mahasiswa</h3>
-            <a href="/admin/kelola-mahasiswa" class="btn btn-secondary btn-sm"><i class="fas fa-arrow-left"></i></a>
+            <a href="/admin/kelola-mahasiswa" class="btn btn-secondary btn-sm mb-2"><i class="fas fa-arrow-left"></i></a>
 
             <?php if (session()->getFlashdata('gagal')) :  ?>
                 <div class="alert alert-danger my-2" role="alert">
@@ -26,8 +26,8 @@
                         <th scope="col">Gambar</th>
                         <th scope="col">Nama</th>
                         <th scope="col">NIM</th>
-                        <th scope="col">Tahun Akademik</th>
                         <th scope="col">Kelas</th>
+                        <th scope="col">Tempat PKL</th>
                         <th scope="col" colspan"3">Action</th>
                     </tr>
                 </thead>
@@ -40,8 +40,8 @@
                         </td>
                         <td><?= $mhs['nama_mhs']; ?></td>
                         <td style="text-align:center;"><?= $mhs['nim']; ?></td>
-                        <td style="text-align:center;"><?= $mhs['tahun_akademik']; ?></td>
                         <td style="text-align:center;">3TE<?= $mhs['kelas']; ?></td>
+                        <td style="text-align:center;"><?= $mhs['tempat_pkl']; ?></td>
                         <td style="text-align:center;">
                             <div class="action">
                                 <a href="/admin/edit-mahasiswa/<?= $mhs['slug']; ?>" class="btn btn-warning btn-sm">Edit

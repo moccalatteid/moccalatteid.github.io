@@ -230,7 +230,7 @@
 
                                              <div>
                                                  <div class="small text-gray-500"><?= $n['tanggal'];  ?></div>
-                                                 <span><?= $n['nama_mhs'];  ?> - Pembimbing <?= $n['pembimbing'];  ?></span>
+                                                 <span><?= $n['nama_mhs'];  ?></span>
                                                  <br>
                                                  <span style="color: red;">Waiting</span>
                                              </div>

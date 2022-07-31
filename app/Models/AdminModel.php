@@ -135,6 +135,17 @@ class AdminModel extends Model
 		return $query;
 	}
 
+	public function getDospem()
+	{
+		$builder = $this->db->table('dospem');
+		$builder->select('*');
+		$builder->join('dosen', 'dospem.id_dosen = dosen.id', 'inner');
+		$builder->join('mahasiswa', 'dospem.id_mhs = mahasiswa.id', 'inner');
+		$builder->where(['mahasiswa.tahun_akademik' < 7]);
+		$query = $builder->get()->getResultArray();
+		return $query;
+	}
+
 	public function getDetailDospemAdmin($id_dospem)
 	{
 		$builder = $this->db->table('dospem');

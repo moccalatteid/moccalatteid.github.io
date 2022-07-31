@@ -8,6 +8,11 @@
     }
 </style>
 
+<?php if (session()->getFlashdata('gagal')) :  ?>
+    <div class="alert alert-danger my-2" role="alert">
+        <?= session()->getFlashdata('gagal');  ?>
+    </div>
+<?php endif;  ?>
 <?php if (session()->getFlashdata('pesan')) :  ?>
     <div class="alert alert-success my-2" role="alert">
         <?= session()->getFlashdata('pesan');  ?>
@@ -37,6 +42,28 @@
             <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
         </svg>
     </a>
+</div>
+<div class="container-6">
+    <div class="col-6">
+        <div class="card border-left-secondary shadow">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <form action="/admin/import" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="" class="col-sm col-form-label">Tambah Data Mahasiswa Menggunakan Import File Excel</label>
+                            <div class="col-sm-7">
+                                <label class="custom-file-label" for="gambar">Pilih File</label>
+                                <input id="gambar" type="file" class="form-control " onchange="previewImg()" name="file_excel">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-sm">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <?= $this->endSection(); ?>
