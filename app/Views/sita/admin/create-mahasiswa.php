@@ -6,9 +6,7 @@
     <div class="row">
         <div class="col-8">
             <h2 class="my-3">Tambah Data Mahasiswa</h2>
-            <?php foreach ($tahun as $t) : ?>
-                <a href="/admin/kelola-mahasiswa" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
-            <?php endforeach; ?>
+            <a href="/admin/kelola-mahasiswa" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
 
             <div class="card border-left-secondary shadow">
                 <div class="card-body">
