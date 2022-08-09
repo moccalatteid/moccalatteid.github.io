@@ -45,12 +45,17 @@
             <div class="alert alert-danger my-2" role="alert">
                 <?= session()->getFlashdata('error');  ?>
             </div>
-        <?php endif;  ?>
+        <?php endif; ?>
         <?php if (session()->getFlashdata('logout')) :  ?>
             <div class="alert alert-success my-2" role="alert">
                 <?= session()->getFlashdata('logout');  ?>
             </div>
-        <?php endif;  ?>
+        <?php endif; ?>
+        <?php if (session()->getFlashdata('pesan')) :  ?>
+            <div class="alert alert-success my-2" role="alert">
+                <?= session()->getFlashdata('pesan');  ?>
+            </div>
+        <?php endif; ?>
 
         <div class="login-box-body">
             <form action="<?= base_url(); ?>/login/ceklogin" method="post">
@@ -70,13 +75,13 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">LOGIN</button>
+                        <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
                     </div>
                 </div>
                 <br>
                 <div class="row mt-2">
                     <div class="col-xs-4">
-                        <a href="<?= base_url('/'); ?>" class="btn btn-warning btn-flat">Kembali</a>
+                        <a href="<?= base_url('/'); ?>" class="btn btn-warning btn-block">Kembali</a>
                     </div>
                 </div>
             </form>

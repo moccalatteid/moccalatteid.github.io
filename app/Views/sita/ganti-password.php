@@ -14,42 +14,82 @@
                 </div>
             <?php endif;  ?>
 
-            <div class="card border-left-secondary shadow">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <form action="/mahasiswa/savepassword/<?= $mahasiswa['id_user'];  ?>" method="post" enctype="multipart/form-data">
-                            <?= csrf_field();  ?>
+            <?php if (session()->get('role') == 'Mahasiswa') { ?>
 
-                            <div class="row mb-3">
-                                <label for="password" class="col-sm-4 col-form-label">Password Baru</label>
-                                <div class="col-sm-9">
-                                    <input type="password" autocomplete="off" value="<?= old('password');  ?>" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?> " name="password" id="password">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('password');  ?>
+                <div class="card border-left-secondary shadow">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <form action="/mahasiswa/savepassword/<?= $mahasiswa['id_user'];  ?>" method="post">
+                                <?= csrf_field();  ?>
+
+                                <div class="row mb-3">
+                                    <label for="password" class="col-sm-4 col-form-label">Password Baru</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" autocomplete="off" value="<?= old('password');  ?>" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?> " name="password" id="password">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('password');  ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <span style="color:red;">*</span>
                                     </div>
                                 </div>
-                                <div class="col-sm-1">
-                                    <span style="color:red;">*</span>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="password_confirm" class="col-sm-4 col-form-label">Konfirmasi Password Baru</label>
-                                <div class="col-sm-9">
-                                    <input type="password" autocomplete="off" value="<?= old('password_confirm');  ?>" class="form-control <?= ($validation->hasError('password_confirm')) ? 'is-invalid' : ''; ?> " name="password_confirm" id="password_confirm">
-                                    <div class="invalid-feedback">
-                                        <?= $validation->getError('password_confirm');  ?>
+                                <div class="row mb-3">
+                                    <label for="password_confirm" class="col-sm-4 col-form-label">Konfirmasi Password Baru</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" autocomplete="off" value="<?= old('password_confirm');  ?>" class="form-control <?= ($validation->hasError('password_confirm')) ? 'is-invalid' : ''; ?> " name="password_confirm" id="password_confirm">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('password_confirm');  ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <span style="color:red;">*</span>
                                     </div>
                                 </div>
-                                <div class="col-sm-1">
-                                    <span style="color:red;">*</span>
-                                </div>
-                            </div>
 
-                            <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                        </form>
+                                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            <?php } else if (session()->get('role') == 'Dosen') { ?>
+                <div class="card border-left-secondary shadow">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <form action="/dosen/savepassword/<?= $dosen['id_user'];  ?>" method="post">
+                                <?= csrf_field();  ?>
+
+                                <div class="row mb-3">
+                                    <label for="password" class="col-sm-4 col-form-label">Password Baru</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" autocomplete="off" value="<?= old('password');  ?>" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?> " name="password" id="password">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('password');  ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <span style="color:red;">*</span>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="password_confirm" class="col-sm-4 col-form-label">Konfirmasi Password Baru</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" autocomplete="off" value="<?= old('password_confirm');  ?>" class="form-control <?= ($validation->hasError('password_confirm')) ? 'is-invalid' : ''; ?> " name="password_confirm" id="password_confirm">
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('password_confirm');  ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <span style="color:red;">*</span>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>

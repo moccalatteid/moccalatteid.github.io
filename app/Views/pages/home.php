@@ -35,6 +35,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
+                    <a class="nav-item btn btn-success button mr-2" href="<?= base_url('login/register-mahasiswa'); ?>">Register Mahasiswa</a>
                     <a class="nav-item btn btn-primary button" href="<?= base_url('login'); ?>">Login</a>
                 </ul>
             </div>
