@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col-10">
-            <h4 class="my-3">Upload File PKL</h4>
+            <h4 class="my-3">Daftar Seminar PKL PKL</h4>
             <a href="/mahasiswa/fileupload/<?= $dospem['id_dospem']; ?>" class="btn btn-secondary"><i class="fas fa-arrow-left"></i></a>
             <form action="/mahasiswa/saveFile" method="post" enctype="multipart/form-data">
                 <?= csrf_field();  ?>
@@ -63,7 +63,7 @@
                         <span style="color:red; font-size: 13px">*Format PDF/WORD DOC</span>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Daftar</button>
             </form>
         </div>
     </div>

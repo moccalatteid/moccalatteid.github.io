@@ -275,7 +275,7 @@
     <?php endif;  ?>
 
     <div class="pilih">
-        <a href="/mahasiswa/upload-file/<?= $dospem['id_dospem'];  ?>" class="tambah"> <i class="fas fa-upload mr-2"></i>Upload File</a>
+        <a href="/mahasiswa/upload-file/<?= $dospem['id_dospem'];  ?>" class="tambah"> <i class="fas fa-upload mr-2"></i>Daftar Seminar PKL</a>
     </div>
 
     <?php $no = 1;  ?>

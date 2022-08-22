@@ -7,10 +7,8 @@ use App\Models\UserModel;
 use \App\Models\KelasModel;
 use \App\Models\MahasiswaModel;
 
-
 class Login extends BaseController
 {
-
 	protected $userModel, $kelasModel, $mhsModel, $db;
 
 	public function __construct()

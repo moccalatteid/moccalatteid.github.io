@@ -42,7 +42,7 @@
                         <td style="text-align:center;"><?= $mhs['nim']; ?></td>
                         <td style="text-align:center;">3TE<?= $mhs['kelas']; ?></td>
                         <td style="text-align:center;"><?= $mhs['tempat_pkl']; ?></td>
-                        <td style="text-align:center;">
+                        <td>
                             <div class="action">
                                 <a href="/admin/edit-mahasiswa/<?= $mhs['slug']; ?>" class="btn btn-warning btn-sm">Edit
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

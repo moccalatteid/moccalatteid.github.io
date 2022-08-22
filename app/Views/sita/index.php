@@ -23,7 +23,7 @@
          <hr class="sidebar-divider">
 
          <?php if (session()->get('role') == 'Admin') {  ?>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/sita">
                      <i class="fas fa-fw fa-user"></i>
                      <span>My Profile</span></a>
@@ -36,17 +36,17 @@
                  <i class="bi bi-people"></i>
                  Kelola User
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a href="/admin/kelola-mahasiswa" class="nav-link collapsed">
                      <span><i class="fas fa-fw fa-user-graduate"></i>Mahasiswa</span>
                  </a>
              </li>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a href="/admin/kelola-dosen" class="nav-link collapsed">
                      <span><i class="fas fa-fw fa-user-tie"></i>Dosen</span>
                  </a>
              </li>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/admin/mahasiswa-bimbingan">
                      <span><i class="fas fa-fw fa-chalkboard-teacher"></i>Tambah Mahasiswa Bimbingan</span>
                  </a>
@@ -57,12 +57,12 @@
              <div class="sidebar-heading">
                  Bimbingan PKL
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/admin/bimbingan">
                      <i class="fas fa-fw fa-table"></i>
                      <span>Bimbingan</span></a>
              </li>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/admin/dailyreport">
                      <i class="fas fa-fw fa-table"></i>
                      <span>Daily Report Activity</span></a>
@@ -73,12 +73,12 @@
 
              <div class="sidebar-heading">
                  <i class="bi bi-table"></i>
-                 Upload File PKL
+                 Seminar PKL
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/admin/upload">
                      <i class="fas fa-fw fa-upload"></i>
-                     <span>Upload File dan Laporan PKL</span></a>
+                     <span>Daftar Seminar PKL</span></a>
 
              </li>
 
@@ -88,7 +88,7 @@
                  <i class="bi bi-table"></i>
                  Profile
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/sita">
                      <i class="fas fa-user"></i>
                      <span>My Profile</span></a>
@@ -101,13 +101,13 @@
                  <i class="bi bi-table"></i>
                  Bimbingan PKL
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/mahasiswa/bimbingan">
                      <i class="fas fa-fw fa-table"></i>
                      <span>Bimbingan</span></a>
 
              </li>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/mahasiswa/dailyreport">
                      <i class="fas fa-fw fa-table"></i>
                      <span>Daily Report Activity</span></a>
@@ -118,12 +118,12 @@
 
              <div class="sidebar-heading">
                  <i class="bi bi-table"></i>
-                 Upload File PKL
+                 Seminar PKL
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/mahasiswa/upload">
                      <i class="fas fa-fw fa-upload"></i>
-                     <span>Upload File dan Laporan PKL</span></a>
+                     <span>Daftar Seminar PKL</span></a>
 
              </li>
 
@@ -146,12 +146,12 @@
                  <i class="bi bi-table"></i>
                  Bimbingan PKL
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/dosen/bimbingan">
                      <i class="fas fa-fw fa-table"></i>
                      <span>Bimbingan</span></a>
              </li>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/dosen/dailyreport">
                      <i class="fas fa-fw fa-table"></i>
                      <span>Daily Report Activity</span></a>
@@ -162,12 +162,12 @@
 
              <div class="sidebar-heading">
                  <i class="bi bi-table"></i>
-                 Upload File PKL
+                 Seminar PKL
              </div>
-             <li class="nav-item">
+             <li class="nav-item active">
                  <a class="nav-link" href="/dosen/upload">
                      <i class="fas fa-fw fa-upload"></i>
-                     <span>Upload File dan Laporan PKL</span></a>
+                     <span>Daftar Seminar PKL</span></a>
 
              </li>
 

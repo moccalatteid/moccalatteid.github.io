@@ -12,7 +12,6 @@ class DailyReportModel extends Model
     protected $primaryKey           = 'id_daily';
     protected $allowedFields        = ['job_name', 'job_sequences', 'tanggal', 'gambar_kegiatan', 'id_dospem'];
     protected $useTimestamps        = true;
-
     protected $db;
 
     public function __construct()

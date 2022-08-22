@@ -9,10 +9,7 @@ class AdminModel extends Model
 
 	protected $table                = 'admin';
 	protected $primaryKey           = 'id';
-
-	// Dates
 	protected $useTimestamps        = true;
-
 	protected $db;
 
 	public function __construct()

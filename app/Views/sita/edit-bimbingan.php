@@ -1,10 +1,6 @@
 <?= $this->extend('sita/index'); ?>
 
-
-
-
 <?= $this->section('isi'); ?>
-
 
 <?php if (session()->get('role') == 'Admin') { ?>
 
@@ -13,8 +9,8 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <a href="/mahasiswa/bimbingan/<?= $user['id']; ?>" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i></a>
                 <h4 class="my-3">Edit Bimbingan</h4>
+                <a href="/mahasiswa/bimbingan" class="btn btn-secondary btn-sm mb-3"><i class="fas fa-arrow-left"></i></a>
                 <form action="/mahasiswa/updatebimbingan" method="post">
                     <?= csrf_field();  ?>
                     <div class="row mb-3">
@@ -25,7 +21,7 @@
                                 <input type="hidden" name="id_dospem" value="<?= $e['id_dospem'];  ?>">
                                 <input type="hidden" name="status" value="<?= $e['id_status'];  ?>">
                             <?php  }  ?>
-                            <input type="text" id="tanggal" autocomplete="off" value="<?= $e['tanggal'];  ?>" class="tm form-control" autofocus name=" tanggal" id="tanggal">
+                            <input type="text" id="tanggal" autocomplete="off" value="<?= $e['tanggal'];  ?>" class="tm form-control" autofocus name=" tanggal" id="tanggal" readonly>
                         </div>
 
                         <div class="col-sm-1">
@@ -52,14 +48,6 @@
                         </div>
                         <div class="col-sm-1">
                             <span style="color:red;">*</span>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
-                        <div class="col-sm-9">
-                            <textarea class="form-control" value="<?= old('keterangan');  ?>" name="keterangan" placeholder="isi keterangan bimbingan.." autocomplete="off" id="keterangan" rows="4">
-                        <?= $e['keterangan'];  ?>
-                        </textarea>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>

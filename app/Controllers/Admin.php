@@ -654,10 +654,10 @@ class Admin extends BaseController
          }
 
          // skip jika ada data yang sama
-         $nim = $this->mhsModel->cekdata($excel['3']);
-         if ($excel['3'] == $nim['nim']) {
-            continue;
-         }
+         // $nim = $this->mhsModel->cekdata($excel['3']);
+         // if ($excel['3'] == $nim['nim']) {
+         //    continue;
+         // }
 
          $mhs = [
             'nama_mhs'       => $excel['1'],
